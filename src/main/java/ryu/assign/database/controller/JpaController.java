@@ -43,8 +43,7 @@ public class JpaController {
 		return users;
 	}
 	
-	
-	@PostMapping("/join")
+	@PostMapping("/user")
 	public String join(@Valid User user) {
 		System.out.println("id : " + user.getId());
 		System.out.println("username : " + user.getUsername());
@@ -59,13 +58,13 @@ public class JpaController {
 	}
 	
 	@Transactional
-	@PutMapping("/user/{id}")
-	public User updateUser(@PathVariable int id, @RequestBody User requestUser) {
-		System.out.println("id : " + id);
+	@PutMapping("/user")
+	public User updateUser(@RequestBody User requestUser) {
+		System.out.println("username : " + requestUser.getUsername());
 		System.out.println("password : " + requestUser.getPassword());
 		System.out.println("email : " + requestUser.getEmail());
 		
-		User user = userRepository.findById(id).orElseThrow(()->{
+		User user = userRepository.findById(requestUser.getId()).orElseThrow(()->{
 			return new IllegalArgumentException("수정에 실패하였습니다");
 		});
 		
