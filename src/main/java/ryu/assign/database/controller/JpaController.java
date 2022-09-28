@@ -59,7 +59,7 @@ public class JpaController {
 	
 	@Transactional
 	@PutMapping("/user")
-	public User updateUser(@RequestBody User requestUser) {
+	public User updateUser(User requestUser) {
 		System.out.println("username : " + requestUser.getUsername());
 		System.out.println("password : " + requestUser.getPassword());
 		System.out.println("email : " + requestUser.getEmail());
