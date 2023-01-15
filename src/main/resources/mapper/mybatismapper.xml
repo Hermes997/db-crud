@@ -24,4 +24,11 @@
 	<delete id="deleteUserByXml">
 	  delete from user where id = #{id}
 	</delete>
+	
+	<insert id="bulkInsertUserList" parameterType="java.util.List">
+        INSERT INTO user2 (name, email, PASSWORD)
+        VALUES <foreach collection="list" item="item" separator=",">
+           (#{item.name}, #{item.email}, #{item.password})
+        </foreach>
+    </insert>
 </mapper>

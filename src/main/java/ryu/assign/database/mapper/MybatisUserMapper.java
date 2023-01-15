@@ -1,5 +1,6 @@
 package ryu.assign.database.mapper;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.apache.ibatis.annotations.Delete;
@@ -9,6 +10,7 @@ import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
 import ryu.assign.database.model.User;
+import ryu.assign.database.model.User2;
 
 @Mapper
 public interface MybatisUserMapper {
@@ -36,4 +38,6 @@ public interface MybatisUserMapper {
 	public void updateUserByXml(User user);
 	
 	public void deleteUserByXml(long id);
+	
+    int bulkInsertUserList(List<User2> users);
 }
